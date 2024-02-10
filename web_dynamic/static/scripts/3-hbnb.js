@@ -121,6 +121,6 @@ function addInformation($article, place) {
 function addDecription($article, place) {
   const $descriptionDiv = $('<div>').addClass('description');
 
-  $descriptionDiv.text(place.description);
+  $descriptionDiv.append(place.description);
   $article.append($descriptionDiv);
 }
