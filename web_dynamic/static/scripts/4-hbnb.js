@@ -42,40 +42,39 @@ $('document').ready(function () {
   getFilteredPlaces($placeSection, checkedIDs);
 });
 
-function getFilteredPlaces($section, amenities){
-  $('button[type="button"]').on('click', function (){
+function getFilteredPlaces ($section, amenities) {
+  $('button[type="button"]').on('click', function () {
     const amenityIDs = Object.keys(amenities);
-    const filters = {amenities: amenityIDs};
+    const filters = { amenities: amenityIDs };
 
     $section.empty();
     getPlaces($section, filters);
   });
 }
 
-function getPlaces($section, filters = {}) {
+function getPlaces ($section, filters = {}) {
   $.ajax({
     type: 'POST',
     url: 'http://127.0.0.1:5001/api/v1/places_search/',
     contentType: 'application/json',
     data: JSON.stringify(filters),
     success: function (places) {
-
       // Sort places by place name
-      places.sort(function(a, b) {
+      places.sort(function (a, b) {
         // Convert both names to lowercase to ensure case-insensitive sorting
-        var nameA = a.name.toLowerCase();
-        var nameB = b.name.toLowerCase();
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
         if (nameA < nameB) {
-            return -1;
+          return -1;
         }
         if (nameA > nameB) {
-            return 1;
+          return 1;
         }
         return 0;
       });
 
       // Dynamically load places
-      $.each(places, function(i, place){
+      $.each(places, function (i, place) {
         const $newArticle = $('<article>');
 
         addTitleBox($newArticle, place);
@@ -88,7 +87,7 @@ function getPlaces($section, filters = {}) {
   });
 }
 
-function addTitleBox($article, place){
+function addTitleBox ($article, place) {
   const $titleBoxDiv = $('<div>').addClass('title_box');
   const $placeByNightDiv = $('<div>').addClass('price_by_night').text('$' + place.price_by_night);
   const $placeNameH2 = $('<h2>').text(place.name);
@@ -98,7 +97,7 @@ function addTitleBox($article, place){
   $article.append($titleBoxDiv);
 }
 
-function addInformation($article, place) {
+function addInformation ($article, place) {
   const guests = place.max_guest;
   const rooms = place.number_rooms;
   const bathrooms = place.number_bathrooms;
@@ -131,7 +130,7 @@ function addInformation($article, place) {
   $article.append($informationDiv);
 }
 
-function addDecription($article, place) {
+function addDecription ($article, place) {
   const $descriptionDiv = $('<div>').addClass('description');
 
   $descriptionDiv.append(place.description);
