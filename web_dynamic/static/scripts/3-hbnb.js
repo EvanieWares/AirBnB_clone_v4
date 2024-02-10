@@ -94,19 +94,19 @@ function addInformation($article, place) {
   const $numberRoomsDiv = $('<div>').addClass('number_rooms');
   const $numberBathroomsDiv = $('<div>').addClass('number_bathrooms');
 
-  if (place.guests !== 1) {
+  if (guests !== 1) {
     $maxGuestDiv.text('' + guests + ' Guests');
   } else {
     $maxGuestDiv.text('' + guests + ' Guest');
   }
 
-  if (place.rooms !== 1) {
+  if (rooms !== 1) {
     $numberRoomsDiv.text('' + rooms + ' Bedrooms');
   } else {
     $numberRoomsDiv.text('' + rooms + ' Bedroom');
   }
 
-  if (place.bathrooms !== 1) {
+  if (bathrooms !== 1) {
     $numberBathroomsDiv.text('' + bathrooms + ' Bedrooms');
   } else {
     $numberBathroomsDiv.text('' + bathrooms + ' Bedroom');
