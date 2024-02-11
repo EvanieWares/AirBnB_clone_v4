@@ -126,6 +126,9 @@ TestBaseModel class:
 * `def test_user_module_docstring(self)` - Test for the user.py module docstring
 * `def test_user_class_docstring(self)` - Test for the User class docstring
 
+#### `/web_dynamic` directory contains a dynamic website:
+It is implemented using JavaScript and uses ajax to communicate with the back-end to retrieve data
+
 
 ## Examples of use
 ```
